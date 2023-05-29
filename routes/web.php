@@ -15,22 +15,36 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('listings', [
+        'heading' => 'latest listings',
+        'listings' => [
+            [
+                'id' => 1,
+                'title' => 'Listing One',
+                'description' => 'House in the woods'
+            ],
+            [
+                'id' => 2,
+                'title' => 'Listing Two',
+                'description' => 'House in the city'
+            ],
+        ]
+    ]);
 });
 
-Route::get('/posts', function () {
-    return response('<h1>Hello World<h1>')
-        ->header('Content-Type', 'text/plain')
-        ->header('foo', 'bar');
-});
+// Route::get('/posts', function () {
+//     return response('<h1>Hello World<h1>')
+//         ->header('Content-Type', 'text/plain')
+//         ->header('foo', 'bar');
+// });
 
-Route::get('/posts/{id}', function($id) {
-    dd($id);
-    return response('Post '. $id);
-})->where('id', '[0-9]+');
+// Route::get('/posts/{id}', function($id) {
+//     dd($id);
+//     return response('Post '. $id);
+// })->where('id', '[0-9]+');
 
-Route::get('/search', function(Request $request) {
-    return response($request->name . ' ' . $request->God);
-});
+// Route::get('/search', function(Request $request) {
+//     return response($request->name . ' ' . $request->God);
+// });
 
 // return 
