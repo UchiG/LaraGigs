@@ -32,9 +32,6 @@ Route::get('/listings/{listing}', [ListingController::class, 'show']);
 
 
 
-
-
-
 // Route::get('/posts', function () {
 //     return response('<h1>Hello World<h1>')
 //         ->header('Content-Type', 'text/plain')

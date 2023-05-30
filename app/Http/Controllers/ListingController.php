@@ -9,13 +9,13 @@ use App\Http\Controllers\Controller;
 class ListingController extends Controller
 {
     // Show all listings
-    public function index()
+    public function index(Request $request)
     {
         return view('listings.index', [
-            'heading' => 'latest listings',
-            'listings' => Listing::all()
+            'listings' => Listing::latest()->filter(request(['tag']))->get()
         ]);
     
+
     }
 
     // Shoe single listing
