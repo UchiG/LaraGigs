@@ -48,7 +48,7 @@ class ListingController extends Controller
 
         Listing::create($formFields);
 
-        return redirect('/')->with('flash-message', 'Listing Created Successfully!');
+        return redirect('/')->with('message', 'Listing Created Successfully!');
     }
 
     public function edit(Listing $listing) {
@@ -74,7 +74,7 @@ class ListingController extends Controller
 
         $listing->update($formFields);
 
-        return back()->with('flash-message', 'Listing Updated Successfully!');
+        return back()->with('message', 'Listing Updated Successfully!');
     }
 
     public function destroy(Listing $listing) {
