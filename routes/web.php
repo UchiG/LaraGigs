@@ -43,11 +43,15 @@ Route::put('/listings/{listing}', [ListingController::class, 'update'])->middlew
 // Delete listing
 Route::delete('/listings/{listing}', [ListingController::class, 'destroy'])->middleware('auth');
 
+// Manage listings
+Route::get('listings/manage', [ListingController::class, 'manage'])->middleware('auth');
+
+
 // Single listing
 Route::get('/listings/{listing}', [ListingController::class, 'show']);
 
 // Show Register Create form
-Route::get('/register', [UserController::class, 'create']);
+Route::get('/register', [UserController::class, 'create'])->middleware('guest');
 
 // Create new user
 Route::post('/users', [UserController::class, 'store']);
@@ -56,7 +60,7 @@ Route::post('/users', [UserController::class, 'store']);
 Route::post('/logout', [UserController::class, 'logout'])->middleware('auth');
 
 // Show login form
-Route::get('/login', [UserController::class, 'login'])->name('login');
+Route::get('/login', [UserController::class, 'login'])->name('login')->middleware('guest');
 
 // Log in user
 Route::post('users/authenticate', [UserController::class, 'authenticate']);
